@@ -39,6 +39,7 @@ for year in year_range:
 
     #should skip? 
     if not path.exists(json_path):
+        print ("Skip:" + str(year))
         continue 
 
     #init row for excel
