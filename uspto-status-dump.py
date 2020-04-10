@@ -26,15 +26,10 @@ for year in range(1900, 2050):
 
             #iterate through each application
             for index, application in enumerate(patent_data):
-                #establish the row
-                row=[]
 
                 #**********************************************************************
                 #               intermediate data 
                 #**********************************************************************
-
-                #calculate progress
-                progress = str(int((index + 1) / total * 100))
 
                 #get the databags
                 patent_case_metadata = application.get("patentCaseMetadata", None)
@@ -117,14 +112,12 @@ for year in range(1900, 2050):
                 print(app_num)
                 print(docket_num)
                 print(datetime.strptime(app_date,'%Y-%m-%d'))
-                print(app_date[0:4])
                 print(app_type)
                 print(examiner_name)
                 print(art_unit)
                 print(applicant)
                 print(attorney)
                 print("; ".join(inventor_list))
-                print(len(inventor_list))
                 print(conf_num)
                 print(aia_flag)
                 print(title)
