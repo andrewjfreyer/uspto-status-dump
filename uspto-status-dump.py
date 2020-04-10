@@ -111,7 +111,7 @@ for year in range(1900, 2050):
                 #--------------- ADD TO ROWS ---------------
                 print(app_num)
                 print(docket_num)
-                print(datetime.strptime(app_date,'%Y-%m-%d'))
+                print(app_date)
                 print(app_type)
                 print(examiner_name)
                 print(art_unit)
