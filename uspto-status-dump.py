@@ -20,7 +20,8 @@ for year in range(1900, 2050):
     json_path = '/src/data/' + str(year)+'.json'
 
     #should skip? 
-    if not path.exists(json_path):
+    if path.exists(json_path):
+        print ("Skipping:" + str(year))
         continue 
 
     with open(json_path) as json_file:
@@ -131,7 +132,7 @@ for year in range(1900, 2050):
                     pros_bag = prosecution_history_data_bag["prosecutionHistoryData"]
 
                     #get most recent status
-                    bag_item = pros_bag[-1]
+                    bag_item = pros_bag[0]
 
                     code = bag_item["eventCode"]
                     date = bag_item["eventDate"]
