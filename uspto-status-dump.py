@@ -159,7 +159,7 @@ for year in range(1900, 2050):
             #--------------- ADD TO ROWS ---------------
             row.append(docket_num)
             row.append(app_num)
-            row.append(datetime.strptime(app_date,'%Y-%m-%d'))
+            row.append(date_format(app_date))
             row.append(app_type)
             row.append(examiner_name)
             row.append(art_unit)
