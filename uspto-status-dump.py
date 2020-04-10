@@ -28,10 +28,9 @@ def date_format (this_date):
 application_data_sheet = []
 
 #year range
-year_range = [range(2000, 2020)]
-
-#add unknown year 
-year_range.append(1900)
+year_range = [1900]
+for x in range(2000, 2020):
+    year_range.append(x)
 
 #parse through files 
 for year in year_range:
