@@ -2,7 +2,6 @@
 import os, json
 from datetime import datetime
 from party_bag import *
-from pros_bag import *
 from datetime import datetime, timedelta
 from dateutil.relativedelta import *
 
@@ -23,6 +22,7 @@ for year in range(1900, 2050):
             #values for database
             app_date = ""
             app_type = ""
+            art_unit = ""
             examiner_name = ""
             applicant = ""
             attorney = ""
