@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import *
 
 ###
-#docker stop uspto-status-dump; docker container rm uspto-status-dump; cd ~/uspto-status-dump && git pull && docker build -t uspto-status-dump .  && docker run -t --mount type=bind,source=/largedisk/user-files/BHFS/bulk,target=/tmp -v /etc/localtime:/etc/localtime:ro --mount type=bind,source=/root/uspto-status-dump,target=/src -v /etc/timezone:/etc/timezone:ro --name uspto-status-dump uspto-status-dump:latest
+#docker stop uspto-status-dump; docker container rm uspto-status-dump; cd ~/developer/uspto-status-dump && git pull && docker build -t uspto-status-dump .  && docker run -t --mount type=bind,source=/root/developer/uspto-status-dump,target=/src -v /etc/timezone:/etc/timezone:ro --name uspto-status-dump uspto-status-dump:latest
 ###
 
 def date_format (this_date):
