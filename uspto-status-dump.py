@@ -42,7 +42,6 @@ for year in year_range:
         continue 
 
     #init row for excel
-    row=[]
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -73,6 +72,7 @@ for year in year_range:
 
         #iterate through each application
         for index, application in enumerate(patent_data):
+            row=[]
 
             #**********************************************************************
             #               intermediate data 
