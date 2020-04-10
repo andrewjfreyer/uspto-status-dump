@@ -55,7 +55,7 @@ application_data_sheet.append(row)
 
 #year range
 year_range = [1900]
-for x in range(2000, 2020):
+for x in range(1990, 2020):
     year_range.append(x)
 
 #parse through files 
