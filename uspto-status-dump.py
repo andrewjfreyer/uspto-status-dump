@@ -186,6 +186,8 @@ for year in year_range:
             #append to the sheet 
             application_data_sheet.append(row)
 
+            #status print 
+            print (docket_num)
 
 #manage excel data
 excel_data = OrderedDict() # from collections import OrderedDict
