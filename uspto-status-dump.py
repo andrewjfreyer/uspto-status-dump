@@ -21,7 +21,7 @@ except ImportError:
 
 def date_format (this_date):
     #quick cheater
-    this_date = this_date.replace("  12:00:00 AM","")
+    this_date = this_date[0:10]
     if not this_date is None and len(this_date) > 5:
         return datetime.strptime(this_date,'%Y-%m-%d')
     return this_date
