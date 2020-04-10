@@ -20,7 +20,7 @@ for year in range(1900, 2050):
     json_path = '/src/data/' + str(year)+'.json'
 
     #should skip? 
-    if path.exists(json_path):
+    if not path.exists(json_path):
         print ("Skipping:" + str(year))
         continue 
 
