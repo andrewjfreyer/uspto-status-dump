@@ -27,13 +27,18 @@ def date_format (this_date):
 #init data sheet
 application_data_sheet = []
 
+#year range
+year_range = range(2000, 2020):
+
+#add unknown year 
+year_range.append(1900)
+
 #parse through files 
-for year in range(1900, 2050):
+for year in year_range:
     json_path = '/src/data/' + str(year)+'.json'
 
     #should skip? 
     if not path.exists(json_path):
-        print ("Skipping:" + str(year))
         continue 
 
     #init row for excel
