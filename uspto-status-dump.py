@@ -21,11 +21,8 @@ except ImportError:
 
 def date_format (this_date):
     #quick cheater
-    this_date = this_date[0:10]
-    if not this_date is None and len(this_date) > 5:
-        return datetime.strptime(this_date,'%Y-%m-%d')
-    return this_date
-
+    return this_date[0:10]
+    
 #init data sheet
 application_data_sheet = []
 
