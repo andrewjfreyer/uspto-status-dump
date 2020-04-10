@@ -140,9 +140,9 @@ for year in range(1900, 2050):
                         current_date = datetime.strptime(date, '%Y-%m-%d')
 
                         #print this at the end of a run to add to database
-                        add_line= "\"" + code + "\" : [ \"" + bag_item["eventDescriptionText"] + ", False]\","
+                        description = bag_item["eventDescriptionText"]
 
-                        print (add_line)
+                        print (description)
 
                 #--------------- ADD TO ROWS ---------------
                 print(app_num)
@@ -165,3 +165,5 @@ for year in range(1900, 2050):
                 print(patpub)
                 print(date_format(patpub_date))
 
+
+print ("end")
