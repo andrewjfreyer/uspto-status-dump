@@ -28,7 +28,7 @@ def date_format (this_date):
 application_data_sheet = []
 
 #year range
-year_range = range(2000, 2020):
+year_range = range(2000, 2020)
 
 #add unknown year 
 year_range.append(1900)
