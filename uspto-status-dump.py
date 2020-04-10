@@ -17,8 +17,7 @@ def date_format (this_date):
 
 #parse through files 
 for year in range(1900, 2050):
-    try:
-        with open('/src/data/' + str(year)+'.json') as json_file:
+    with open('/src/data/' + str(year)+'.json') as json_file:
             data = json.load(json_file)
 
             #get patent data
@@ -137,6 +136,3 @@ for year in range(1900, 2050):
                 print(patpub)
                 print(date_format(patpub_date))
 
-
-    except:
-        print("No data for year: " + str(year))
