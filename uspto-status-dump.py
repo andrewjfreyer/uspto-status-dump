@@ -186,8 +186,8 @@ for year in year_range:
             #append to the sheet 
             application_data_sheet.append(row)
 
-            #status print 
-            print (docket_num)
+
+print ("Making sheet...")
 
 #manage excel data
 excel_data = OrderedDict() # from collections import OrderedDict
@@ -195,6 +195,7 @@ excel_data = OrderedDict() # from collections import OrderedDict
 #sheet name, along with row data
 excel_data.update({ "Status Data Dump" : application_data_sheet})
 
+print ("Saving sheet...")
 #string io proxy for writing to memory
 save_data("/src/data/status_dump.xlsx", excel_data)
 
