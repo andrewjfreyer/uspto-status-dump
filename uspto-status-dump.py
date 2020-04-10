@@ -130,19 +130,20 @@ for year in range(1900, 2050):
                     #get partbag object
                     pros_bag = prosecution_history_data_bag["prosecutionHistoryData"]
 
-                    #iterate through all of these items in chronological order
-                    for bag_item in reversed(pros_bag):
-                       
-                        #get the codes from our bag_item
-                        code = bag_item["eventCode"]
-                        date = bag_item["eventDate"]
+                    #get most recent status
+                    bag_item = pros_bag[-1]
+
+                    code = bag_item["eventCode"]
+                    date = bag_item["eventDate"]
                         
-                        current_date = datetime.strptime(date, '%Y-%m-%d')
+                    current_date = datetime.strptime(date, '%Y-%m-%d')
 
                         #print this at the end of a run to add to database
-                        description = bag_item["eventDescriptionText"]
+                    description = bag_item["eventDescriptionText"]
 
-                        print (description)
+                    print (date)
+                    print (description)
+
 
                 #--------------- ADD TO ROWS ---------------
                 print(app_num)
