@@ -135,7 +135,7 @@ for year in range(1900, 2050):
             #--------------- ADD TO ROWS ---------------
             row.append(app_num)
             row.append(docket_num)
-            row.append(datetime.strptime(app_date,'%Y-%m-%d'))
+            row.append(app_date ? datetime.strptime(app_date,'%Y-%m-%d') : "")
             row.append(app_date[0:4])
             row.append(app_type)
             row.append(examiner_name)
