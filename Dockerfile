@@ -2,8 +2,7 @@ FROM python:3
 
 MAINTAINER Andrew J Freyer "andrew.freyer@gmail.com"
 
-#INSTALL EXCEL STUFFS
-RUN pip3 install pyexcel
+#INSTALL
 RUN pip3 install python-dateutil --upgrade
 
 #EXECUTE SCRIPT

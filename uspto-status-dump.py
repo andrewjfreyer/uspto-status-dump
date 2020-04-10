@@ -108,6 +108,8 @@ for year in range(1900, 2050):
                             #print this at the end of a run to add to database
                             add_line= "\"" + code + "\" : [ \"" + bag_item["eventDescriptionText"] + ", False]\","
 
+                            print (add_line)
+
                 #--------------- ADD TO ROWS ---------------
                 print(app_num)
                 print(docket_num)
