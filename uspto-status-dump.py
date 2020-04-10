@@ -22,9 +22,9 @@ except ImportError:
 def date_format (this_date):
     if not this_date is None and len(this_date) > 5:
         return datetime.strptime(this_date,'%Y-%m-%d')
-    return ""
+    return this_date
 
-
+#init data sheet
 application_data_sheet = []
 
 #parse through files 
