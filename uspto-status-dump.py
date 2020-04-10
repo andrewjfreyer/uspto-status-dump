@@ -6,6 +6,15 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import *
 from os import path
 
+#excep output
+from pyexcel_xlsx import save_data
+
+#need an ordered dict from collactions for excel output
+try:
+    from collections import OrderedDict
+except ImportError:
+    OrderedDict = dict
+
 ###
 #docker stop uspto-status-dump; docker container rm uspto-status-dump; cd ~/developer/uspto-status-dump && git pull && docker build -t uspto-status-dump .  && docker run -t --mount type=bind,source=/root/developer/uspto-status-dump,target=/src -v /etc/timezone:/etc/timezone:ro --name uspto-status-dump uspto-status-dump:latest
 ###
@@ -14,6 +23,9 @@ def date_format (this_date):
     if not this_date is None and len(this_date) > 5:
         return datetime.strptime(this_date,'%Y-%m-%d')
     return ""
+
+
+application_data_sheet = []
 
 #parse through files 
 for year in range(1900, 2050):
@@ -24,36 +36,10 @@ for year in range(1900, 2050):
         print ("Skipping:" + str(year))
         continue 
 
+    #init row for excel
+    row=[]
     with open(json_path) as json_file:
         data = json.load(json_file)
-
-        #values for database
-        app_date = ""
-        app_type = ""
-        art_unit = ""
-        examiner_name = ""
-        applicant = ""
-        attorney = ""
-        app_num = ""
-        inventor_list = []
-        conf_num = ""
-        aia_flag=""
-        docket_num=""
-        title=""
-        status=""
-        status_date=""
-        pgpub = ""
-        pgpub_date = ""
-        patpub=""
-        patpub_date=""
-        noa_count=""
-        rce_count=""
-        aa_count=""
-        foa_count=""
-        nfoa_count=""
-        response_after_foa_count=""
-        response_after_nfoa_count=""
-        ids_count=""
 
         #get patent data
         patent_data = data["PatentData"]
@@ -146,26 +132,49 @@ for year in range(1900, 2050):
                     print (description)
 
 
-                #--------------- ADD TO ROWS ---------------
-                print(app_num)
-                print(docket_num)
-                print(app_date)
-                print(app_type)
-                print(examiner_name)
-                print(art_unit)
-                print(applicant)
-                print(attorney)
-                print("; ".join(inventor_list))
-                print(conf_num)
-                print(aia_flag)
-                print(title)
-                print(status)
-                print(date_format(status_date))
-                print(status_date[0:4])
-                print(pgpub)
-                print(date_format(pgpub_date))
-                print(patpub)
-                print(date_format(patpub_date))
+            #--------------- ADD TO ROWS ---------------
+            row.append(app_num)
+            row.append(docket_num)
+            row.append(datetime.strptime(app_date,'%Y-%m-%d'))
+            row.append(app_date[0:4])
+            row.append(app_type)
+            row.append(examiner_name)
+            row.append(art_unit)
+            row.append(applicant)
+            row.append(attorney)
+            row.append("; ".join(inventor_list))
+            row.append(len(inventor_list))
+            row.append(conf_num)
+            row.append(aia_flag)
+            row.append(title)
+            row.append(status)
+            row.append(date_format(status_date))
+            row.append(status_date[0:4])
+            row.append(pgpub)
+            row.append(date_format(pgpub_date))
+            row.append(patpub)
+            row.append(date_format(patpub_date))
+            row.append(days_to_application_complete)
+            row.append(days_to_first_action)
+            row.append(response_3mo)
+            row.append(response_4mo)
+            row.append(response_5mo)
+            row.append(response_6mo)
+            row.append(sum(days_to_respond) / (len(days_to_respond) + 1))
+            row.append(sum(days_to_action) / (len(days_to_action) + 1))
+            row.append(action_preceding_allowance)
 
+            #append to the sheet 
+            application_data_sheet.append(row)
+
+
+#manage excel data
+excel_data = OrderedDict() # from collections import OrderedDict
+
+#sheet name, along with row data
+excel_data.update({ "Status Data Dump" : application_data_sheet})
+
+#string io proxy for writing to memory
+save_data("/src/data/status_dump.xlsx", excel_data)
 
 print ("end")
