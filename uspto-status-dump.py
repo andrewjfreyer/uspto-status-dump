@@ -20,12 +20,41 @@ except ImportError:
 ###
 
 def date_format (this_date):
+    #quick cheater
+    this_date = this_date.replace("  12:00:00 AM","")
     if not this_date is None and len(this_date) > 5:
         return datetime.strptime(this_date,'%Y-%m-%d')
     return this_date
 
 #init data sheet
 application_data_sheet = []
+
+#set headers
+row=[]
+#--------------- ADD TO ROWS ---------------
+row.append("DOCKET NUMBER")
+row.append("APP NO")
+row.append("FILING DATE")
+row.append("TYPE")
+row.append("EXAMINER")
+row.append("ART UNIT")
+row.append("APPLICANT")
+row.append("ATTORNEY")
+row.append("INVENTORS")
+row.append("CONF")
+row.append("AIA STATUS")
+row.append("TITLE")
+row.append("STATUS")
+row.append("STATUS DATE")
+row.append("PRE-GRANT PUB NO")
+row.append("PRE-GRANT PUB DATE")
+row.append("PAT NO")
+row.append("PAT DATE")
+row.append("LAST TRANSACTION")
+row.append("LAST TRANSACTION DATE")
+
+#append to the sheet 
+application_data_sheet.append(row)
 
 #year range
 year_range = [1900]
