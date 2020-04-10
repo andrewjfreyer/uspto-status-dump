@@ -41,6 +41,27 @@ for year in range(1900, 2050):
     with open(json_path) as json_file:
         data = json.load(json_file)
 
+        #init
+        docket_num = ""
+        app_num = ""
+        app_date = ""
+        app_type = ""
+        examiner_name = ""
+        art_unit = ""
+        applicant = ""
+        attorney = ""
+        conf_num = ""
+        aia_flag = ""
+        title = ""
+        status = ""
+        status_date = ""
+        pgpub = ""
+        pgpub_date = ""
+        patpub = ""
+        patpub_date = ""
+        most_recent_tx = ""
+        most_recent_tx_date = ""
+
         #get patent data
         patent_data = data["PatentData"]
         total = len(patent_data)
@@ -107,6 +128,9 @@ for year in range(1900, 2050):
             #**********************************************************************
             #               prosection 
             #**********************************************************************
+            most_recent_tx = ""
+            most_recent_tx_date = ""
+
             if prosecution_history_data_bag is not None:
                 #>>> GET PROSECTION DATA
 
@@ -128,41 +152,31 @@ for year in range(1900, 2050):
                         #print this at the end of a run to add to database
                     description = bag_item["eventDescriptionText"]
 
-                    print (date)
-                    print (description)
+                    most_recent_tx_date =  date
+                    most_recent_tx = description
 
 
             #--------------- ADD TO ROWS ---------------
-            row.append(app_num)
             row.append(docket_num)
-            row.append(app_date ? datetime.strptime(app_date,'%Y-%m-%d') : "")
-            row.append(app_date[0:4])
+            row.append(app_num)
+            row.append(datetime.strptime(app_date,'%Y-%m-%d'))
             row.append(app_type)
             row.append(examiner_name)
             row.append(art_unit)
             row.append(applicant)
             row.append(attorney)
             row.append("; ".join(inventor_list))
-            row.append(len(inventor_list))
             row.append(conf_num)
             row.append(aia_flag)
             row.append(title)
             row.append(status)
             row.append(date_format(status_date))
-            row.append(status_date[0:4])
             row.append(pgpub)
             row.append(date_format(pgpub_date))
             row.append(patpub)
             row.append(date_format(patpub_date))
-            row.append(days_to_application_complete)
-            row.append(days_to_first_action)
-            row.append(response_3mo)
-            row.append(response_4mo)
-            row.append(response_5mo)
-            row.append(response_6mo)
-            row.append(sum(days_to_respond) / (len(days_to_respond) + 1))
-            row.append(sum(days_to_action) / (len(days_to_action) + 1))
-            row.append(action_preceding_allowance)
+            row.append(most_recent_tx)
+            row.append(date_format(most_recent_tx_date))
 
             #append to the sheet 
             application_data_sheet.append(row)
