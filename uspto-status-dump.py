@@ -20,6 +20,33 @@ for year in range(1900, 2050):
     with open('/src/data/' + str(year)+'.json') as json_file:
             data = json.load(json_file)
 
+            #values for database
+            app_date = ""
+            app_type = ""
+            examiner_name = ""
+            applicant = ""
+            attorney = ""
+            app_num = ""
+            inventor_list = []
+            conf_num = ""
+            aia_flag=""
+            docket_num=""
+            title=""
+            status=""
+            status_date=""
+            pgpub = ""
+            pgpub_date = ""
+            patpub=""
+            patpub_date=""
+            noa_count=""
+            rce_count=""
+            aa_count=""
+            foa_count=""
+            nfoa_count=""
+            response_after_foa_count=""
+            response_after_nfoa_count=""
+            ids_count=""
+
             #get patent data
             patent_data = data["PatentData"]
             total = len(patent_data)
